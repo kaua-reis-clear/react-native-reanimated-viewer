@@ -71,6 +71,7 @@ type LayoutData = { width: number; height: number; pageX: number; pageY: number 
 export type ImageViewerRef = {
   show: (_: { index: number; source?: ImageURISource }) => void;
   init: (_: { index: number; itemRef: RefObject<TouchableOpacity> }) => void;
+  close: () => void;
 };
 
 const IMAGE_SPACE = 20;
@@ -779,6 +780,9 @@ const ImageViewer = forwardRef<ImageViewerRef, ImageViewerProps>((props, ref) =>
           },
         );
       }
+    },
+    close: () => {
+      onClose(GestureEnum.TAP);
     },
   }));
 
